@@ -26,8 +26,14 @@ apply plugin: 'maven-publish'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
+group = "prospector.silk"
 archivesBaseName = "SilkAPI"
 version = "0.1.0"
+
+def ENV = System.getenv()
+if (ENV.BUILD_NUMBER) {
+	version = version + "-" + "${System.getenv().BUILD_NUMBER}"
+}
 
 minecraft {
 }
@@ -39,42 +45,35 @@ dependencies {
 	modCompile "net.fabricmc:fabric:0.0.3-SNAPSHOT"
 }
 
-uploadArchives {
+publishing {
+	publications {
+		maven(MavenPublication) {
+			groupId project.group
+			artifactId project.archivesBaseName
+			version project.version
+
+			from components.java
+
+			artifact apiJar {
+				classifier "api"
+			}
+
+			artifact deobfJar {
+				classifier "dev"
+			}
+
+			artifact sourceJar {
+				classifier "sources"
+			}
+		}
+	}
 	repositories {
-		mavenDeployer {
-			//This is used when the build is done on a slave node
+		maven {
+			url "http://mavenupload.modmuss50.me/"
 			if (project.hasProperty('mavenPass')) {
-				println 'Uploading to remote Maven Repo'
-				repository(url: "http://mavenupload.modmuss50.me/") {
-					authentication(userName: "buildslave", password: project.getProperty('mavenPass'))
-				}
-			} else {
-				//this is when the build is executed on the master node
-				println 'Uploading to local Maven Repo'
-				repository(url: "file:///var/www/maven/")
-			}
-
-			pom.whenConfigured {
-				p ->
-					p.dependencies = p.dependencies.findAll {
-						dep -> dep.artifactId != "Tesla"
-					}
-			}
-
-			pom {
-				groupId = "prospector.silk"
-				version = project.version
-				artifactId = project.archivesBaseName
-				project {
-					name project.archivesBaseName
-					packaging 'jar'
-					description project.archivesBaseName
-					url 'https://github.com/ProfessorProspector/Silk'
-					scm {
-						url 'https://github.com/ProfessorProspector/Silk'
-						connection 'scm:git:git@github.com:ProfessorProspector/Silk.git'
-						developerConnection 'scm:git:git@github.com:ProfessorProspector/Silk.git'
-					}
+				credentials {
+					username 'buildslave'
+					password project.getProperty('mavenPass')
 				}
 			}
 		}
