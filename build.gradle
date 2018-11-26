@@ -1,0 +1,36 @@
+buildscript {
+	repositories {
+		jcenter()
+		maven {
+			name = 'Fabric'
+			url = 'http://maven.modmuss50.me/'
+		}
+	}
+	dependencies {
+		classpath "net.fabricmc:fabric-loom:0.0.13-SNAPSHOT"
+	}
+}
+
+plugins {
+	id 'java'
+	id 'eclipse'
+	id 'idea'
+}
+
+apply plugin: net.fabricmc.loom.LoomGradlePlugin
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+archivesBaseName = "SilkAPI"
+version = "0.1.0"
+
+minecraft {
+}
+
+dependencies {
+	minecraft "com.mojang:minecraft:18w47a"
+	mappings "net.fabricmc:pomf:18w47a.7"
+	modCompile "net.fabricmc:fabric-loader:18w44a-0.1.0.45"
+	modCompile "net.fabricmc:fabric:0.0.3-SNAPSHOT"
+}

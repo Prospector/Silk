@@ -1,0 +1,12 @@
+{
+  "id": "silk",
+  "name": "Silk API",
+  "version": "0.1.0",
+  "side": "universal",
+  "initializer": "prospector.silk.Silk",
+  "description": "Adds general utils for making mods that don't quite belong in Fabric API",
+  "mixins": {
+    "common": "silk.common.json",
+    "client": "silk.client.json"
+  }
+}
