@@ -10,6 +10,6 @@ public class SilkLeavesBlock extends LeavesBlock {
 	public Item sapling;
 
 	public SilkLeavesBlock(Item sapling) {
-		super(SilkBlockBuilder.create(Material.LEAVES).setStrength(0.2F).acceptRandomTicks().setSoundGroup(BlockSoundGroup.field_11535).build());
+		super(SilkBlockBuilder.create(Material.LEAVES).setStrength(0.2F).acceptRandomTicks().setSoundGroup(BlockSoundGroup.GRASS).build());
 	}
 }

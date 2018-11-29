@@ -8,6 +8,6 @@ import prospector.silk.util.SilkSaplingGenerator;
 
 public class SilkSaplingBlock extends SaplingBlock {
 	public SilkSaplingBlock(SilkSaplingGenerator treeGenerator) {
-		super(treeGenerator, SilkBlockBuilder.create(Material.PLANT).noCollision().acceptRandomTicks().breakInstantly().setSoundGroup(BlockSoundGroup.field_11535).build());
+		super(treeGenerator, SilkBlockBuilder.create(Material.PLANT).noCollision().acceptRandomTicks().breakInstantly().setSoundGroup(BlockSoundGroup.GRASS).build());
 	}
 }
