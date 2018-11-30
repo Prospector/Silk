@@ -1,15 +1,9 @@
 package prospector.silk;
 
-import net.fabricmc.api.ModInitializer;
+import net.minecraft.block.Block;
+import prospector.silk.item.SilkAxeItem;
 
-public class Silk implements ModInitializer {
+public class Silk {
 
-	static {
-
-	}
-
-	@Override
-	public void onInitialize() {
-
-	}
+	public static void mapStrippedLog(Block log, Block strippedLog) { SilkAxeItem.mapStrippedLog(log, strippedLog); }
 }
