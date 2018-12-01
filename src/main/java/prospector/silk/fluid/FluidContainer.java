@@ -1,4 +1,4 @@
-package prospector.silk.blockentity;
+package prospector.silk.fluid;
 
 import net.minecraft.fluid.Fluid;
 import net.minecraft.util.math.Facing;
@@ -27,4 +27,8 @@ public interface FluidContainer {
 	void insertFluid(Facing fromSide, Fluid fluid, int amount);
 
 	void extractFluid(Facing fromSide, Fluid fluid, int amount);
+
+	void setFluid(Facing fromSide, FluidInstance instance);
+
+	FluidInstance[] getFluids(Facing fromSide);
 }
