@@ -14,7 +14,7 @@ public class SilkSaplingGenerator extends SaplingGenerator {
 	}
 
 	@Override
-	protected TreeFeature<DefaultFeatureConfig> getTreeFeature(Random random) {
+	protected TreeFeature<DefaultFeatureConfig> createTreeFeature(Random random) {
 		return feature;
 	}
 }

@@ -5,9 +5,9 @@ import net.minecraft.fluid.Fluids;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import prospector.silk.util.Serializable;
+import prospector.silk.util.TagSerializable;
 
-public class FluidInstance implements Serializable {
+public class FluidInstance implements TagSerializable {
 	public static final String FLUID_KEY = "Fluid";
 	public static final String AMOUNT_KEY = "Amount";
 
@@ -29,7 +29,7 @@ public class FluidInstance implements Serializable {
 
 	public FluidInstance(CompoundTag tag) {
 		this();
-		deserialize(tag);
+		fromTag(tag);
 	}
 
 	public Fluid getFluid() {
@@ -65,14 +65,14 @@ public class FluidInstance implements Serializable {
 	}
 
 	@Override
-	public CompoundTag serialize(CompoundTag tag) {
+	public CompoundTag toTag(CompoundTag tag) {
 		tag.putString(FLUID_KEY, Registry.FLUIDS.getId(fluid).toString());
 		tag.putInt(AMOUNT_KEY, amount);
 		return tag;
 	}
 
 	@Override
-	public void deserialize(CompoundTag tag) {
+	public void fromTag(CompoundTag tag) {
 		fluid = Registry.FLUIDS.get(new Identifier(tag.getString(FLUID_KEY)));
 		amount = tag.getInt(AMOUNT_KEY);
 	}
