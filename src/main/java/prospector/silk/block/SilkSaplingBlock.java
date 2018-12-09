@@ -1,6 +1,6 @@
 package prospector.silk.block;
 
-import net.fabricmc.fabric.helpers.FabricBlockBuilder;
+import net.fabricmc.fabric.block.FabricBlockSettings;
 import net.minecraft.block.Material;
 import net.minecraft.block.SaplingBlock;
 import net.minecraft.sound.BlockSoundGroup;
@@ -8,6 +8,6 @@ import prospector.silk.util.SilkSaplingGenerator;
 
 public class SilkSaplingBlock extends SaplingBlock {
 	public SilkSaplingBlock(SilkSaplingGenerator treeGenerator) {
-		super(treeGenerator, FabricBlockBuilder.create(Material.PLANT).setCollidable(false).acceptRandomTicks().setHardness(0).setSoundGroup(BlockSoundGroup.GRASS).build());
+		super(treeGenerator, FabricBlockSettings.create(Material.PLANT).setCollidable(false).acceptRandomTicks().setHardness(0).setSoundGroup(BlockSoundGroup.GRASS).build());
 	}
 }

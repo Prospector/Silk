@@ -6,11 +6,12 @@ import net.minecraft.block.RenderTypeBlock;
 
 public abstract class SilkBlockWithEntity extends BlockWithEntity {
 
-	public SilkBlockWithEntity(Builder builder) {
-		super(builder);
+	public SilkBlockWithEntity(Settings settings) {
+		super(settings);
 	}
 
-	public RenderTypeBlock getRenderType(BlockState var1) {
+	@Override
+	public RenderTypeBlock getRenderType(BlockState state) {
 		return RenderTypeBlock.MODEL;
 	}
 }
