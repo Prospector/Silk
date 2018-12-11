@@ -1,4 +1,4 @@
-package prospector.silk.util;
+package io.github.prospector.silk.util;
 
 public class RenderUtil {
 	public static double frac(double d) {

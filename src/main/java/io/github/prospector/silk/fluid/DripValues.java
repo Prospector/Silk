@@ -1,4 +1,4 @@
-package prospector.silk.fluid;
+package io.github.prospector.silk.fluid;
 
 public class DripValues {
 	// Common Equivalents

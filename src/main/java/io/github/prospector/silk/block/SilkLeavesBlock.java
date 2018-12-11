@@ -1,4 +1,4 @@
-package prospector.silk.block;
+package io.github.prospector.silk.block;
 
 import net.fabricmc.fabric.block.FabricBlockSettings;
 import net.minecraft.block.LeavesBlock;

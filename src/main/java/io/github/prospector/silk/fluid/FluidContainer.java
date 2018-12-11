@@ -1,4 +1,4 @@
-package prospector.silk.fluid;
+package io.github.prospector.silk.fluid;
 
 import net.minecraft.fluid.Fluid;
 import net.minecraft.util.math.Facing;

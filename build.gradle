@@ -26,9 +26,9 @@ apply plugin: 'maven-publish'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-group = "prospector.silk"
+group = "io.github.prospector.silk"
 archivesBaseName = "SilkAPI"
-version = "0.1.0"
+version = "1.0.0"
 
 def ENV = System.getenv()
 if (ENV.BUILD_NUMBER) {

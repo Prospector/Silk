@@ -1,4 +1,4 @@
-package prospector.silk.item;
+package io.github.prospector.silk.item;
 
 import net.minecraft.item.$ilkExtendablePickaxeItem;
 import net.minecraft.item.ToolMaterial;

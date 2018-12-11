@@ -1,4 +1,4 @@
-package prospector.silk.item;
+package io.github.prospector.silk.item;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.$ilkExtendableAxeItem;

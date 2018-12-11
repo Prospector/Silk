@@ -1,4 +1,4 @@
-package prospector.silk.block;
+package io.github.prospector.silk.block;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWithEntity;

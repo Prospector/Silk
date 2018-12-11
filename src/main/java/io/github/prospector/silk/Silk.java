@@ -1,7 +1,7 @@
-package prospector.silk;
+package io.github.prospector.silk;
 
 import net.minecraft.block.Block;
-import prospector.silk.item.SilkAxeItem;
+import io.github.prospector.silk.item.SilkAxeItem;
 
 public class Silk {
 

@@ -1,4 +1,4 @@
-package prospector.silk.util;
+package io.github.prospector.silk.util;
 
 import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.world.gen.config.feature.DefaultFeatureConfig;

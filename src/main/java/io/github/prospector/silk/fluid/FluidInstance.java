@@ -1,11 +1,11 @@
-package prospector.silk.fluid;
+package io.github.prospector.silk.fluid;
 
+import io.github.prospector.silk.util.TagSerializable;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import prospector.silk.util.TagSerializable;
 
 public class FluidInstance implements TagSerializable {
 	public static final String FLUID_KEY = "Fluid";
