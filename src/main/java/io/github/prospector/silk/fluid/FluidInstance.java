@@ -66,14 +66,14 @@ public class FluidInstance implements TagSerializable {
 
 	@Override
 	public CompoundTag toTag(CompoundTag tag) {
-		tag.putString(FLUID_KEY, Registry.FLUIDS.getId(fluid).toString());
+		tag.putString(FLUID_KEY, Registry.FLUID.getId(fluid).toString());
 		tag.putInt(AMOUNT_KEY, amount);
 		return tag;
 	}
 
 	@Override
 	public void fromTag(CompoundTag tag) {
-		fluid = Registry.FLUIDS.get(new Identifier(tag.getString(FLUID_KEY)));
+		fluid = Registry.FLUID.get(new Identifier(tag.getString(FLUID_KEY)));
 		amount = tag.getInt(AMOUNT_KEY);
 	}
 

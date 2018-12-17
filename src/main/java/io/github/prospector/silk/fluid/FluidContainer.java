@@ -1,14 +1,14 @@
 package io.github.prospector.silk.fluid;
 
 import net.minecraft.fluid.Fluid;
-import net.minecraft.util.math.Facing;
+import net.minecraft.util.math.Direction;
 
 public interface FluidContainer {
-	boolean canInsertFluid(Facing fromSide, Fluid fluid, int amount);
+	boolean canInsertFluid(Direction fromSide, Fluid fluid, int amount);
 
-	boolean canExtractFluid(Facing fromSide, Fluid fluid, int amount);
+	boolean canExtractFluid(Direction fromSide, Fluid fluid, int amount);
 
-	default boolean tryInsertFluid(Facing fromSide, Fluid fluid, int amount) {
+	default boolean tryInsertFluid(Direction fromSide, Fluid fluid, int amount) {
 		if (canInsertFluid(fromSide, fluid, amount)) {
 			insertFluid(fromSide, fluid, amount);
 			return true;
@@ -16,7 +16,7 @@ public interface FluidContainer {
 		return false;
 	}
 
-	default boolean tryExtractFluid(Facing fromSide, Fluid fluid, int amount) {
+	default boolean tryExtractFluid(Direction fromSide, Fluid fluid, int amount) {
 		if (canExtractFluid(fromSide, fluid, amount)) {
 			extractFluid(fromSide, fluid, amount);
 			return true;
@@ -24,11 +24,11 @@ public interface FluidContainer {
 		return false;
 	}
 
-	void insertFluid(Facing fromSide, Fluid fluid, int amount);
+	void insertFluid(Direction fromSide, Fluid fluid, int amount);
 
-	void extractFluid(Facing fromSide, Fluid fluid, int amount);
+	void extractFluid(Direction fromSide, Fluid fluid, int amount);
 
-	void setFluid(Facing fromSide, FluidInstance instance);
+	void setFluid(Direction fromSide, FluidInstance instance);
 
-	FluidInstance[] getFluids(Facing fromSide);
+	FluidInstance[] getFluids(Direction fromSide);
 }
