@@ -50,12 +50,12 @@ public class FluidInstance implements TagSerializable {
 		return this;
 	}
 
-	public FluidInstance shrink(int amount) {
+	public FluidInstance subtractAmount(int amount) {
 		this.amount -= amount;
 		return this;
 	}
 
-	public FluidInstance grow(int amount) {
+	public FluidInstance addAmount(int amount) {
 		this.amount += amount;
 		return this;
 	}

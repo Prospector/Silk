@@ -30,6 +30,7 @@ public interface FluidContainer {
 
 	/**
 	 * Attempt to insert fluid on an all-or-nothing basis.
+	 *
 	 * @param fromSide the side from which to insert.
 	 * @param fluid the type of fluid to insert.
 	 * @param amount how much fluid to insert.
@@ -46,6 +47,7 @@ public interface FluidContainer {
 
 	/**
 	 * Attempt to insert fluid, only filling partially if the container can't hold all the fluid.
+	 *
 	 * @param fromSide the side from which to insert.
 	 * @param fluid the type of fluid to insert.
 	 * @param maxAmount how much fluid to insert at maximum.
@@ -64,6 +66,7 @@ public interface FluidContainer {
 
 	/**
 	 * Attempt to extract fluid on an all-or-nothing basis.
+	 *
 	 * @param fromSide the side from which to extract.
 	 * @param fluid the type of fluid to extract.
 	 * @param amount how much fluid to extract.
@@ -80,6 +83,7 @@ public interface FluidContainer {
 
 	/**
 	 * Attempt to extract fluid, only emptying partially if the container doesn't have enough fluid.
+	 *
 	 * @param fromSide the side from which to extract.
 	 * @param fluid the type of fluid to extract.
 	 * @param maxAmount how much fluid to extract at maximum.
