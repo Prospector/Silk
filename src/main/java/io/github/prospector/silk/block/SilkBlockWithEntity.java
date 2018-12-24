@@ -1,8 +1,8 @@
 package io.github.prospector.silk.block;
 
+import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWithEntity;
-import net.minecraft.block.RenderTypeBlock;
 
 public abstract class SilkBlockWithEntity extends BlockWithEntity {
 
@@ -11,7 +11,7 @@ public abstract class SilkBlockWithEntity extends BlockWithEntity {
 	}
 
 	@Override
-	public RenderTypeBlock getRenderType(BlockState state) {
-		return RenderTypeBlock.MODEL;
+	public BlockRenderType getRenderType(BlockState state) {
+		return BlockRenderType.MODEL;
 	}
 }
