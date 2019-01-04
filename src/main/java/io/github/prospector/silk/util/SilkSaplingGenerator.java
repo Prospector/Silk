@@ -1,8 +1,8 @@
 package io.github.prospector.silk.util;
 
 import net.minecraft.block.sapling.SaplingGenerator;
-import net.minecraft.world.gen.config.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.AbstractTreeFeature;
+import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 
 import java.util.Random;
 
