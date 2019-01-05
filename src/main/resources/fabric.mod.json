@@ -1,7 +1,7 @@
 {
   "id": "silk",
   "name": "Silk API",
-  "version": "0.1.0",
+  "version": "$version",
   "side": "universal",
   "initializers": [ ],
   "description": "Adds general utils for making mods that don't quite belong in Fabric API",
