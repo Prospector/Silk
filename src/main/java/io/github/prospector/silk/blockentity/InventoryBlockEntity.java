@@ -7,7 +7,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.text.TextComponent;
 import net.minecraft.util.DefaultedList;
 import net.minecraft.util.InventoryUtil;
 
@@ -85,32 +84,8 @@ public abstract class InventoryBlockEntity extends BlockEntity implements Invent
 	}
 
 	@Override
-	public int getInvProperty(int i) {
-		return 0;
-	}
-
-	@Override
-	public void setInvProperty(int i, int i1) {
-
-	}
-
-	@Override
-	public int getInvPropertyCount() {
-		return 0;
-	}
-
-	@Override
 	public void clearInv() {
 		inventory.clear();
 	}
 
-	@Override
-	public TextComponent getName() {
-		return null;
-	}
-
-	@Override
-	public boolean hasCustomName() {
-		return false;
-	}
 }
