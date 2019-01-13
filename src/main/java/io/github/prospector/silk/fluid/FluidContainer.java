@@ -1,6 +1,6 @@
 package io.github.prospector.silk.fluid;
 
-import io.github.prospector.silk.util.ActionType;
+import io.github.prospector.silk.util.ContainerInteraction;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.util.math.Direction;
 
@@ -37,9 +37,9 @@ public interface FluidContainer {
 	 * @param interaction whether to SIMULATE or EXECUTE insertion.
 	 * @return whether the insertion was/would be successful.
 	 */
-	default boolean tryInsertFluid(Direction fromSide, Fluid fluid, int amount, ActionType interaction) {
+	default boolean tryInsertFluid(Direction fromSide, Fluid fluid, int amount, ContainerInteraction interaction) {
 		if (canInsertFluid(fromSide, fluid, amount)) {
-			if (interaction == ActionType.PERFORM) insertFluid(fromSide, fluid, amount);
+			if (interaction == ContainerInteraction.EXECUTE) insertFluid(fromSide, fluid, amount);
 			return true;
 		}
 		return false;
@@ -54,11 +54,11 @@ public interface FluidContainer {
 	 * @param interaction whether to SIMULATE or EXECUTE insertion.
 	 * @return an integer amount of how much fluid was/would be moved.
 	 */
-	default int tryPartialInsertFluid(Direction fromSide, Fluid fluid, int maxAmount, ActionType interaction) {
+	default int tryPartialInsertFluid(Direction fromSide, Fluid fluid, int maxAmount, ContainerInteraction interaction) {
 		int remainingCapacity = getMaxCapacity() - getCurrentFill(fromSide);
 		int amount = maxAmount <= remainingCapacity ? maxAmount : remainingCapacity;
 		if (canInsertFluid(fromSide, fluid, amount)) {
-			if (interaction == ActionType.PERFORM) insertFluid(fromSide, fluid, amount);
+			if (interaction == ContainerInteraction.EXECUTE) insertFluid(fromSide, fluid, amount);
 			return amount;
 		}
 		return 0;
@@ -73,9 +73,9 @@ public interface FluidContainer {
 	 * @param interaction whether to SIMULATE or EXECUTE extraction.
 	 * @return whether the extraction was/would be successful.
 	 */
-	default boolean tryExtractFluid(Direction fromSide, Fluid fluid, int amount, ActionType interaction) {
+	default boolean tryExtractFluid(Direction fromSide, Fluid fluid, int amount, ContainerInteraction interaction) {
 		if (canExtractFluid(fromSide, fluid, amount)) {
-			if (interaction == ActionType.PERFORM) extractFluid(fromSide, fluid, amount);
+			if (interaction == ContainerInteraction.EXECUTE) extractFluid(fromSide, fluid, amount);
 			return true;
 		}
 		return false;
@@ -90,11 +90,11 @@ public interface FluidContainer {
 	 * @param interaction whether to SIMULATE or EXECUTE extraction.
 	 * @return an integer amount of how much fluid was/would be moved.
 	 */
-	default int tryPartialExtractFluid(Direction fromSide, Fluid fluid, int maxAmount, ActionType interaction) {
+	default int tryPartialExtractFluid(Direction fromSide, Fluid fluid, int maxAmount, ContainerInteraction interaction) {
 		int remainingFluid = getCurrentSingleFluidFill(fromSide, fluid);
 		int amount = maxAmount <= remainingFluid ? maxAmount : remainingFluid;
 		if (canExtractFluid(fromSide, fluid, amount)) {
-			if (interaction == ActionType.PERFORM) extractFluid(fromSide, fluid, amount);
+			if (interaction == ContainerInteraction.EXECUTE) extractFluid(fromSide, fluid, amount);
 			return amount;
 		}
 		return 0;
