@@ -85,32 +85,7 @@ public abstract class InventoryBlockEntity extends BlockEntity implements Invent
 	}
 
 	@Override
-	public int getInvProperty(int i) {
-		return 0;
-	}
-
-	@Override
-	public void setInvProperty(int i, int i1) {
-
-	}
-
-	@Override
-	public int getInvPropertyCount() {
-		return 0;
-	}
-
-	@Override
-	public void clearInv() {
+	public void clear() {
 		inventory.clear();
-	}
-
-	@Override
-	public TextComponent getName() {
-		return null;
-	}
-
-	@Override
-	public boolean hasCustomName() {
-		return false;
 	}
 }

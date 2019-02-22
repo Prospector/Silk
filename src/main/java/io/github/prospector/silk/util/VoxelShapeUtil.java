@@ -5,7 +5,7 @@ import net.minecraft.util.shape.VoxelShape;
 
 public class VoxelShapeUtil {
 	public static VoxelShape rotateHorizontal(int minX, int minY, int minZ, int maxX, int maxY, int maxZ, Rotation rot) {
-		return Block.createCubeShape(
+		return Block.createCuboidShape(
 			rot.getX(minX, minZ), rot.getX(maxX, maxZ), minY, maxY,
 			rot.getZ(minX, minZ), rot.getZ(maxX, maxZ)
 		);

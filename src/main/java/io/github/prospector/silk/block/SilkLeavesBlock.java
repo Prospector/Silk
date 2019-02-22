@@ -1,6 +1,6 @@
 package io.github.prospector.silk.block;
 
-import net.fabricmc.fabric.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.LeavesBlock;
 import net.minecraft.block.Material;
 import net.minecraft.item.Item;
@@ -10,6 +10,6 @@ public class SilkLeavesBlock extends LeavesBlock {
 	public Item sapling;
 
 	public SilkLeavesBlock(Item sapling) {
-		super(FabricBlockSettings.create(Material.LEAVES).setHardness(0.2F).acceptRandomTicks().setSoundGroup(BlockSoundGroup.GRASS).build());
+		super(FabricBlockSettings.of(Material.LEAVES).hardness(0.2F).ticksRandomly().sounds(BlockSoundGroup.GRASS).build());
 	}
 }

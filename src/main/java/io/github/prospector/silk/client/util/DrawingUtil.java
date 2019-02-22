@@ -7,6 +7,6 @@ import net.minecraft.item.ItemStack;
 public class DrawingUtil {
 	public static void drawItemStack(ItemStack stack, int x, int y) {
 		GuiLighting.enableForItems();
-		MinecraftClient.getInstance().getItemRenderer().renderItemAndGlowInGui(stack, x, y);
+		MinecraftClient.getInstance().getItemRenderer().renderGuiItem(stack, x, y);
 	}
 }
