@@ -10,9 +10,13 @@ import net.minecraft.util.registry.Registry;
 public class FluidInstance implements TagSerializable {
 	public static final String FLUID_KEY = "Fluid";
 	public static final String AMOUNT_KEY = "Amount";
+	public static final String TAG_KEY = "Tag";
+
+	public static final FluidInstance EMPTY = new FluidInstance(Fluids.EMPTY, 0);
 
 	protected Fluid fluid;
 	protected int amount;
+	protected CompoundTag tag;
 
 	public FluidInstance(Fluid fluid, int amount) {
 		this.fluid = fluid;
@@ -40,6 +44,10 @@ public class FluidInstance implements TagSerializable {
 		return amount;
 	}
 
+	public CompoundTag getTag() {
+		return tag;
+	}
+
 	public FluidInstance setFluid(Fluid fluid) {
 		this.fluid = fluid;
 		return this;
@@ -60,6 +68,14 @@ public class FluidInstance implements TagSerializable {
 		return this;
 	}
 
+	public void setTag(CompoundTag tag) {
+		this.tag = tag;
+	}
+
+	public boolean isEmpty() {
+		return this.getFluid() == Fluids.EMPTY || this.getAmount() == 0;
+	}
+
 	public FluidInstance copy() {
 		return new FluidInstance().setFluid(fluid).setAmount(amount);
 	}
@@ -68,6 +84,7 @@ public class FluidInstance implements TagSerializable {
 	public CompoundTag toTag(CompoundTag tag) {
 		tag.putString(FLUID_KEY, Registry.FLUID.getId(fluid).toString());
 		tag.putInt(AMOUNT_KEY, amount);
+		tag.put(TAG_KEY, tag);
 		return tag;
 	}
 
@@ -75,6 +92,7 @@ public class FluidInstance implements TagSerializable {
 	public void fromTag(CompoundTag tag) {
 		fluid = Registry.FLUID.get(new Identifier(tag.getString(FLUID_KEY)));
 		amount = tag.getInt(AMOUNT_KEY);
+		tag = tag.getCompound(TAG_KEY);
 	}
 
 	@Override
