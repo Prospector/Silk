@@ -36,6 +36,7 @@ if (ENV.BUILD_NUMBER) {
 }
 
 minecraft {
+	refmapName = 'mixins.silk.refmap.json'
 }
 
 dependencies {

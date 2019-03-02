@@ -5,5 +5,7 @@
   "side": "universal",
   "initializers": [ ],
   "description": "Adds general utils for making mods that don't quite belong in Fabric API",
-  "mixins": { }
+  "mixins": {
+    "common": "silk.common.json"
+  }
 }
