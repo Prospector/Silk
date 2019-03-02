@@ -28,7 +28,7 @@ targetCompatibility = 1.8
 
 group = "io.github.prospector.silk"
 archivesBaseName = "SilkAPI"
-version = "1.2.1"
+version = "1.2.2"
 
 def ENV = System.getenv()
 if (ENV.BUILD_NUMBER) {
