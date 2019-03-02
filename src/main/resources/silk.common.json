@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "io.github.prospector.silk.mixins",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "mixins.silk.refmap.json",
+  "mixins": [
+    "MixinBottleFluid",
+    "MixinBucketFluid"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
