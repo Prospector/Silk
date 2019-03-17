@@ -7,9 +7,8 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.text.TextComponent;
 import net.minecraft.util.DefaultedList;
-import net.minecraft.util.InventoryUtil;
+import net.minecraft.inventory.Inventories;
 
 public abstract class InventoryBlockEntity extends BlockEntity implements Inventory {
 
@@ -43,12 +42,12 @@ public abstract class InventoryBlockEntity extends BlockEntity implements Invent
 
 	@Override
 	public ItemStack takeInvStack(int slot, int amount) {
-		return InventoryUtil.splitStack(this.inventory, slot, amount);
+		return Inventories.splitStack(this.inventory, slot, amount);
 	}
 
 	@Override
 	public ItemStack removeInvStack(int slot) {
-		return InventoryUtil.removeStack(this.inventory, slot);
+		return Inventories.removeStack(this.inventory, slot);
 	}
 
 	@Override

@@ -28,7 +28,7 @@ targetCompatibility = 1.8
 
 group = "io.github.prospector.silk"
 archivesBaseName = "SilkAPI"
-version = "1.2.2"
+version = "1.2.3"
 
 def ENV = System.getenv()
 if (ENV.BUILD_NUMBER) {
@@ -40,10 +40,10 @@ minecraft {
 }
 
 dependencies {
-	minecraft "com.mojang:minecraft:19w08b"
-	mappings "net.fabricmc:yarn:19w08b.3"
+	minecraft "com.mojang:minecraft:19w11b"
+	mappings "net.fabricmc:yarn:19w11b.4"
 	modCompile "net.fabricmc:fabric-loader:0.3.7.109"
-	modCompile "net.fabricmc:fabric:0.2.2.103"
+	modCompile "net.fabricmc:fabric:0.2.3.111"
 }
 
 processResources {
