@@ -1,11 +1,25 @@
 {
+  "schemaVersion": 1,
   "id": "silk",
   "name": "Silk API",
   "version": "$version",
-  "side": "universal",
-  "initializers": [ ],
+  "environment": "*",
+  "license": "MIT",
+  "icon": "assets/silk/icon.png",
+  "requires": {
+	"fabric": "*"
+  },
+  "authors": [
+	"Prospector", "Boundarybreaker"
+  ],
+  "contributors": [
+	"Raphy", "Falkreon"
+  ],
   "description": "Adds general utils for making mods that don't quite belong in Fabric API",
-  "mixins": {
-    "common": "silk.common.json"
+  "mixins": [
+	"mixins.silk.json"
+  ],
+  "custom": {
+	"modmenu:api": true
   }
 }

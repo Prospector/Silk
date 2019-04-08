@@ -4,10 +4,10 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "mixins.silk.refmap.json",
   "mixins": [
-    "MixinBottleFluid",
-    "MixinBucketFluid"
+	"MixinBottleFluid",
+	"MixinBucketFluid"
   ],
   "injectors": {
-    "defaultRequire": 1
+	"defaultRequire": 1
   }
 }

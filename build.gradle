@@ -28,7 +28,7 @@ targetCompatibility = 1.8
 
 group = "io.github.prospector.silk"
 archivesBaseName = "SilkAPI"
-version = "1.2.3"
+version = "1.2.4"
 
 def ENV = System.getenv()
 if (ENV.BUILD_NUMBER) {
@@ -36,14 +36,13 @@ if (ENV.BUILD_NUMBER) {
 }
 
 minecraft {
-	refmapName = 'mixins.silk.refmap.json'
 }
 
 dependencies {
-	minecraft "com.mojang:minecraft:19w13b"
-	mappings "net.fabricmc:yarn:19w13b.1"
-	modCompile "net.fabricmc:fabric-loader:0.3.7.109"
-	modCompile "net.fabricmc:fabric:0.2.6.117"
+	minecraft "com.mojang:minecraft:19w14b"
+	mappings "net.fabricmc:yarn:19w14b.4"
+	modCompile "net.fabricmc:fabric-loader:0.4.0+build.113"
+	modCompile "net.fabricmc:fabric:0.2.6.121"
 }
 
 processResources {
