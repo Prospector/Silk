@@ -1,0 +1,6 @@
+{
+  "silk.fluid.value.bucket": "%s Bucket(s)",
+  "silk.fluid.value.ingot": "%s Ingot(s)",
+  "silk.fluid.value.nugget": "%s Nugget(s)",
+  "silk.fluid.value.nugget_partial": "%s.%s Nugget(s)"
+}
