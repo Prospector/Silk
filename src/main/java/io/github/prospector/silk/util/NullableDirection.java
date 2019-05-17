@@ -1,11 +1,11 @@
 package io.github.prospector.silk.util;
 
-import net.minecraft.util.StringRepresentable;
+import net.minecraft.util.StringIdentifiable;
 import net.minecraft.util.math.Direction;
 
 import java.util.EnumMap;
 
-public enum NullableDirection implements StringRepresentable {
+public enum NullableDirection implements StringIdentifiable {
 	NONE(null),
 	DOWN(Direction.DOWN),
 	UP(Direction.UP),
