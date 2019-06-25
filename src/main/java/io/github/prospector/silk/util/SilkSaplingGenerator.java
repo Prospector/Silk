@@ -5,16 +5,17 @@ import net.minecraft.world.gen.feature.AbstractTreeFeature;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 
 import java.util.Random;
+import java.util.function.Supplier;
 
 public class SilkSaplingGenerator extends SaplingGenerator {
-	public final AbstractTreeFeature<DefaultFeatureConfig> feature;
+	public final Supplier<AbstractTreeFeature<DefaultFeatureConfig>> featureSupplier;
 
-	public SilkSaplingGenerator(AbstractTreeFeature<DefaultFeatureConfig> feature) {
-		this.feature = feature;
+	public SilkSaplingGenerator(Supplier<AbstractTreeFeature<DefaultFeatureConfig>> featureSupplier) {
+		this.featureSupplier = featureSupplier;
 	}
 
 	@Override
 	protected AbstractTreeFeature<DefaultFeatureConfig> createTreeFeature(Random random) {
-		return feature;
+		return featureSupplier.get();
 	}
 }

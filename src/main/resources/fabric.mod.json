@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "id": "silk",
-  "name": "Silk API",
+  "name": "Silk",
   "version": "$version",
   "environment": "*",
   "license": "MIT",
   "icon": "assets/silk/icon.png",
-  "requires": {
+  "depends": {
 	"fabric": "*"
   },
   "authors": [
