@@ -44,7 +44,7 @@ public class ItemUtils {
 			return false;
 		if (a.getItem() != b.getItem())
 			return false;
-		if (matchNBT && !ItemStack.areEqualIgnoreTags(a, b))
+		if (matchNBT && !ItemStack.areItemsEqualIgnoreDamage(a, b))
 			return false;
 		if (matchDamage) {
 			if (a.getDamage() != b.getDamage())
@@ -93,7 +93,7 @@ public class ItemUtils {
 	}
 
 	public static void stackToTag(ItemStack stack, CompoundTag data) {
-		if (stack.isEmpty() || stack.getAmount() <= 0)
+		if (stack.isEmpty() || stack.getCount() <= 0)
 			return;
 		stack.toTag(data);
 	}

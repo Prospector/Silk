@@ -4,15 +4,15 @@ import io.github.prospector.silk.util.ItemUtils;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.DefaultedList;
-import net.minecraft.inventory.Inventories;
 
 public abstract class InventoryBlockEntity extends BlockEntity implements Inventory {
 
-	private DefaultedList<ItemStack> inventory = DefaultedList.create(getInvSize(), ItemStack.EMPTY);
+	private DefaultedList<ItemStack> inventory = DefaultedList.ofSize(getInvSize(), ItemStack.EMPTY);
 
 	@Override
 	public void fromTag(CompoundTag compoundTag) {
@@ -53,8 +53,8 @@ public abstract class InventoryBlockEntity extends BlockEntity implements Invent
 	@Override
 	public void setInvStack(int slot, ItemStack itemStack) {
 		this.inventory.set(slot, itemStack);
-		if (itemStack.getAmount() > this.getInvMaxStackAmount()) {
-			itemStack.setAmount(this.getInvMaxStackAmount());
+		if (itemStack.getCount() > this.getInvMaxStackAmount()) {
+			itemStack.setCount(this.getInvMaxStackAmount());
 		}
 	}
 

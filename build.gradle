@@ -1,90 +1,82 @@
-import net.fabricmc.loom.LoomGradlePlugin
-
-buildscript {
-	repositories {
-		jcenter()
-		maven {
-			name = 'Fabric'
-			url = 'http://maven.modmuss50.me/'
-		}
-	}
-	dependencies {
-		classpath "net.fabricmc:fabric-loom:0.2.1-SNAPSHOT"
-	}
-}
-
 plugins {
-	id 'java'
-	id 'eclipse'
-	id 'idea'
+    id 'java'
+    id 'maven-publish'
+    id 'idea'
+    id 'eclipse'
+    id 'fabric-loom' version '0.2.4-SNAPSHOT'
 }
-
-apply plugin: LoomGradlePlugin
-apply plugin: 'maven'
-apply plugin: 'maven-publish'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-group = "io.github.prospector.silk"
-archivesBaseName = "SilkAPI"
-version = "1.2.4"
+archivesBaseName = project.archive_name
+version = project.mod_version
+group = project.maven_group
 
 def ENV = System.getenv()
-if (ENV.BUILD_NUMBER) {
-	version = version + "-" + "${System.getenv().BUILD_NUMBER}"
-}
-
-minecraft {
-}
+version = version + "+" + (ENV.BUILD_NUMBER ? ("build." + ENV.BUILD_NUMBER) : "custom")
 
 dependencies {
-	minecraft "com.mojang:minecraft:1.14.2"
-	mappings "net.fabricmc:yarn:1.14.2+build.2"
-	modCompile "net.fabricmc:fabric-loader:0.4.8+build.154"
-	modCompile "net.fabricmc.fabric-api:fabric-api:0.3.0+build.175"
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings "net.fabricmc:yarn:${project.yarn_mappings}"
+    modCompile "net.fabricmc:fabric-loader:${project.loader_version}"
+    modCompile "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
+    project.fabric_modules.split(", ").each {
+        String module -> include "net.fabricmc.fabric-api:${module}"
+    }
 }
 
 processResources {
-	from(sourceSets.main.resources.srcDirs) {
-		include 'fabric.mod.json'
-		expand version: project.version
-	}
-	from(sourceSets.main.resources.srcDirs) {
-		exclude 'fabric.mod.json'
-	}
+    inputs.property "version", project.version
+
+    from(sourceSets.main.resources.srcDirs) {
+        include "fabric.mod.json"
+        expand "version": project.version
+    }
+
+    from(sourceSets.main.resources.srcDirs) {
+        exclude "fabric.mod.json"
+    }
 }
 
-uploadArchives {
-	repositories {
-		mavenDeployer {
-			//This is used when the build is done on a slave node
-			if (project.hasProperty('mavenPass')) {
-				println 'Uploading to remote Maven Repo'
-				repository(url: "http://mavenupload.modmuss50.me/") {
-					authentication(userName: "buildslave", password: project.getProperty('mavenPass'))
-				}
-			} else {
-				//this is when the build is executed on the master node
-				println 'Uploading to local Maven Repo'
-				repository(url: "file:///var/www/maven/")
-			}
-			pom {
-				groupId = project.group
-				version = project.version
-				artifactId = project.archivesBaseName
-				project {
-					name project.archivesBaseName
-					packaging 'jar'
-					description project.archivesBaseName
-					url 'https://github.com/Prospector/Silk'
-					scm {
-						url 'https://github.com/Prospector/Silk'
-						connection 'scm:git:git@github.com:Prospector/Silk.git'
-						developerConnection 'scm:git:git@github.com:Prospector/Silk.git'
-					}
-				}
-			}
-		}
-	}
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = "sources"
+    from sourceSets.main.allSource
+}
+
+jar {
+    from "LICENSE"
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifact(sourcesJar) {
+                builtBy remapSourcesJar
+            }
+
+            afterEvaluate {
+                artifact(remapJar.output) {
+                    builtBy remapJar
+                }
+            }
+        }
+    }
+
+    repositories {
+        if (project.hasProperty('mavenPass')) {
+            maven {
+                url = "http://mavenupload.modmuss50.me/"
+                credentials {
+                    username = "buildslave"
+                    password = project.getProperty('mavenPass')
+                }
+            }
+        }
+    }
 }

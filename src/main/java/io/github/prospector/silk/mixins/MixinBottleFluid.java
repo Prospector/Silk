@@ -14,8 +14,8 @@ public class MixinBottleFluid implements ItemWithFluid {
 	@Override
 	public FluidInstance getFluid(ItemStack stack) {
 		if (stack.getItem() instanceof PotionItem) {
-			PotionItem potion = (PotionItem)stack.getItem();
-			if (PotionUtil.getPotion(stack).equals(PotionUtil.getPotion(potion.getDefaultStack()))) {
+			PotionItem potion = (PotionItem) stack.getItem();
+			if (PotionUtil.getPotion(stack).equals(PotionUtil.getPotion(potion.getStackForRender()))) {
 				return new FluidInstance(Fluids.WATER, DropletValues.BOTTLE);
 			}
 		}

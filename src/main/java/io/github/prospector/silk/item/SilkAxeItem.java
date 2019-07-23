@@ -10,6 +10,6 @@ public class SilkAxeItem extends AxeItem {
 	}
 
 	public static void mapStrippedLog(Block log, Block strippedLog) {
-		BLOCK_TRANSFORMATIONS_MAP.put(log, strippedLog);
+		STRIPPED_BLOCKS.put(log, strippedLog);
 	}
 }
